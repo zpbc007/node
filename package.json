@@ -1,0 +1,26 @@
+{
+  "name": "node-algorithm",
+  "version": "1.0.0",
+  "description": "learn algorithm and use node to test",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zpbc007/node.git"
+  },
+  "author": "zhaopeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zpbc007/node/issues"
+  },
+  "homepage": "https://github.com/zpbc007/node#readme",
+  "dependencies": {
+    "ava": "^0.25.0"
+  },
+  "ava": {
+    "match": ["*test"],
+    "verbose": true
+  }
+}
