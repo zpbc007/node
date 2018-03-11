@@ -24,7 +24,6 @@
     "verbose": true
   },
   "devDependencies": {
-    "ava": "^0.25.0",
-    "babel-preset-env": "^1.6.1"
+    "ava": "^0.25.0"
   }
 }
