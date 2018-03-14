@@ -1,9 +1,9 @@
 const test = require('ava')
 let data = require('./data.json')
-const mergeSortTtoB = require('../../../src/algorithm/1.sort/1.自顶向下的归并排序').MergeSort 
-const mergeSortBtoT = require('../../../src/algorithm/1.sort/2.自底向上的归并排序').MergeSort
-const quickSrot = require('../../../src/algorithm/1.sort/3.快速排序').QuickSort
-const quickSrotThreePart = require('../../../src/algorithm/1.sort/4.三向切分的快速排序').QuickSort
+const mergeSortTtoB = require('../../../../src/algorithm/1.sort/1.自顶向下的归并排序').MergeSort 
+const mergeSortBtoT = require('../../../../src/algorithm/1.sort/2.自底向上的归并排序').MergeSort
+const quickSrot = require('../../../../src/algorithm/1.sort/3.快速排序').QuickSort
+const quickSrotThreePart = require('../../../../src/algorithm/1.sort/4.三向切分的快速排序').QuickSort
 
 function testSort (sortFunc, t) {
     // 复制数据

@@ -1,6 +1,5 @@
-// const test = require('ava')
 import test from 'ava'
-const MaxPQ = require('../../../src/algorithm/1.sort/5.优先队列').MaxPQ
+const MaxPQ = require('../../../../src/algorithm/1.sort/5.优先队列').MaxPQ
 const data = require('./data.json')
 
 test('优先队列test', (t) => {
