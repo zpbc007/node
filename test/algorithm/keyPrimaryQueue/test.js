@@ -1,5 +1,5 @@
 import test from 'ava'
-const IndexMinPQ = require('../../../src/algorithm/sort/6.关联索引的优先队列').IndexMinPQ
+const IndexMinPQ = require('../../../src/algorithm/1.sort/6.关联索引的优先队列').IndexMinPQ
 const data = require('./data.json')
 
 test('关联索引的优先队列test', t => {
