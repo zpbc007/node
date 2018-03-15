@@ -40,6 +40,7 @@ class Search {
         }
     }
 
+    // 递归实现
     // rank (key, lo, hi) {
     //     if (typeof lo === 'undefined' || typeof hi === 'undefined') {
     //         lo = 0
@@ -58,11 +59,12 @@ class Search {
     //     }
     // }
 
+    // 非递归实现
     rank (key) {
         let lo = 0,
             hi = this.N - 1
 
-        while (lo < hi) {
+        while (lo <= hi) {
             let mid = Math.ceil(lo + (hi - lo) / 2),
                 midKey = this.keyArr[mid]
 
@@ -86,7 +88,6 @@ class Search {
         for (let key of this.keyArr) {
             result.push(key)
         }
-        debugger
         return result
     }
 }
