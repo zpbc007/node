@@ -22,15 +22,15 @@ function testSort (sortFunc, t) {
     })
 }
 
-test('自顶向下的归并排序test', (t) => {
+test.serial('自顶向下的归并排序test', (t) => {
     testSort(mergeSortTtoB, t)
 })
-test('自底向上的归并排序test', (t) => {
+test.serial('自底向上的归并排序test', (t) => {
     testSort(mergeSortBtoT, t)
 })
-test('快速排序test', (t) => {
+test.serial('快速排序test', (t) => {
     testSort(quickSrot, t)
 })
-test('三向切分的快速排序test', (t) => {
+test.serial('三向切分的快速排序test', (t) => {
     testSort(quickSrotThreePart, t)
 })
