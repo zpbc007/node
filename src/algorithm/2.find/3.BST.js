@@ -61,6 +61,74 @@ class BST {
             callback(node)
             this.traverseTree(node.right, callback)
         })
+
+        addMethod(this, 'min', () => {
+            return this.min(this.root).key
+        })
+        addMethod(this, 'min', (node) => {
+            if (node.left === null) return node
+            return this.min(node.left)
+        })
+
+        addMethod(this, 'floor', (key) => {
+            const node = this.floor(this.root, key)
+            if (node === null) return null
+            return node.key
+        })
+        addMethod(this, 'floor', (node, key) => {
+            if (node === null) {
+                return null
+            }
+
+            if (key === node.key) {
+                return node
+            } else if (key < node.key) {
+                return this.floor(node.left, key)
+            } else {
+                const t = this.floor(node.right, key)
+                if (t !== null) return t
+                return node
+            }
+        })
+
+        // 选择排名为k的键
+        addMethod(this, 'select', (k) => {
+            const node = this.select(this.root, k)
+            if (node === null) {
+                return null 
+            } else {
+                return node.key
+            }
+        })
+        addMethod(this, 'select', (node, k) => {
+            if (node === null) return null
+            
+            let t = this.size(node.left)
+            if (t > k) {
+                return this.select(node.left, k)
+            } else if (t < k) {
+                return this.select(node.right, k - t - 1)
+            } else {
+                return node
+            }
+        })
+
+        // 返回给定键的排名
+        addMethod(this, 'rank', (key) => {
+            return this.rank(this.root, key)
+        })
+        addMethod(this, 'rank', (node, key) => {
+            if (node === null) {
+                return 0
+            }
+            if (key < node.key) {
+                return this.rank(node.left, key)
+            } else if (key > node.key) {
+                return this.rank(node.right, key) + this.size(node.left) + 1
+            } else {
+                return this.size(node.left)
+            }
+        })
     }
 
     contains (key) {
