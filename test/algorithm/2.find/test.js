@@ -4,6 +4,7 @@ import path from 'path'
 const SequentialSearchST = require('../../../src/algorithm/2.find/1.SequentialSearchST').Search
 const BinarySearchST = require('../../../src/algorithm/2.find/2.BinarySearchST').Search
 const BinarySearchTree = require('../../../src/algorithm/2.find/3.BST').BST
+const RedBlackBST = require('../../../src/algorithm/2.find/4.RedBlackBST').RedBlackBST
 
 test.serial('无序链表的顺序查找test', async t => {
     t.plan(1)
@@ -20,6 +21,12 @@ test.serial('有序数组的二分查找test', async t => {
 test.serial('二分查找树test', async t => {
     t.plan(1)
     await testFunc(new BinarySearchTree())
+    t.pass()
+})
+
+test.serial('红黑树test', async t => {
+    t.plan(1)
+    await testFunc(new RedBlackBST())
     t.pass()
 })
 

@@ -15,4 +15,29 @@ function addMethod (obj, name, fun) {
     }
 }
 
-exports.addMethod = addMethod
+/**
+ * 判断连个数组的元素是否相同
+ * @param {*} arr1 
+ * @param {*} arr2 
+ */
+function arrayEqual (arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+        return false
+    }
+    for (let element of arr1) {
+        if (!arr2.includes(element)) {
+            return false
+        } else {
+            arr2.splice(arr2.indexOf(element), 1)
+        }
+    }
+    if (arr2.length !== 0) {
+        return false
+    }
+    return true
+}
+
+module.exports = {
+    addMethod,
+    arrayEqual
+}

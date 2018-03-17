@@ -1,7 +1,8 @@
 import test from 'ava'
+const arrayEqual = require('../../../../util/util').arrayEqual
 const BinarySearchTree = require('../../../../src/algorithm/2.find/3.BST').BST
 const QuickSort = require('../../../../src/algorithm/1.sort/3.快速排序').QuickSort
-const data = require('./test.json')
+const data = require('../baseTestData.json')
 
 test('二叉搜索树 min test', t => {
     t.plan(1)
@@ -50,6 +51,47 @@ test('二叉搜索树 rank test', t => {
     t.is(bst.rank(arr[2]), rank(arr, arr[2]))
 })
 
+test('二叉搜索树 delMin test', t => {
+    t.plan(data.length)
+    const bst = new BinarySearchTree()
+    const arr = []
+    data.forEach(element => {
+        bst.put(element.key, element.val)
+        arr.push(element.key)
+    })
+    QuickSort(arr)
+    for (let i of arr) {
+        bst.delMin(node => {
+            t.is(i, node.key)
+        })
+    }
+})
+
+test('二叉搜索树 delete test', t => {
+    t.plan(data.length)
+    const bst = new BinarySearchTree()
+    const arr = []
+    data.forEach(element => {
+        bst.put(element.key, element.val)
+        arr.push(element.key)
+    })
+    for (let i of arr) {
+        bst.delete(i)
+        t.is(bst.contains(i), false)
+    }
+})
+
+test('二叉搜索树 keys test', t => {
+    t.plan(2)
+    const bst = new BinarySearchTree()
+    const arr = []
+    data.forEach(element => {
+        bst.put(element.key, element.val)
+        arr.push(element.key)
+    })
+    t.is(arrayEqual(arr, bst.keys()), true)
+    t.is(arrayEqual(['b', 'c', 'd'], bst.keys('b', 'd')), true)
+})
 
 function floorInArray (arr, val) {
     QuickSort(arr)

@@ -129,18 +129,74 @@ class BST {
                 return this.size(node.left)
             }
         })
+
+        // 删除最小键
+        addMethod(this, 'delMin', (callback) => {
+            this.root = this.delMin(this.root, callback)
+        })
+        addMethod(this, 'delMin', (node, callback) => {
+            if (node.left === null) {
+                callback(node)
+                return node.right
+            }
+            node.left = this.delMin(node.left, callback)
+            node.N = this.size(node.left) + this.size(node.right) + 1
+            return node
+        })
+
+        // 删除指定键
+        addMethod(this, 'delete', (key) => {
+            this.root = this.delete(this.root, key)
+        })
+        addMethod(this, 'delete', (node, key) => {
+            if (node === null) return null
+
+            if (node.key > key) {
+                node.left = this.delete(node.left, key)
+            } else if (node.key < key) {    
+                node.right = this.delete(node.right, key)
+            } else {
+                if (node.left === null) {
+                    return node.right
+                }
+                if (node.right === null) {
+                    return node.left
+                }
+                const t = node
+                node = this.min(t.right)
+                node.right = this.delMin(t.right, () => {})
+                node.left = t.left
+            }
+            node.N = this.size(node.left) + this.size(node.right) + 1
+            return node
+        })
+        
+        // 返回所有键
+        addMethod(this, 'keys', () => {
+            let result = []
+            this.traverseTree((node) => {
+                result.push(node.key)
+            })
+            return result
+        })
+        // traverse方法会遍历所有节点，在有key的时候用key值判断可以减少遍历次数
+        addMethod(this, 'keys', (lo, hi) => {
+            let result = []
+            this.keys(this.root, result, lo, hi)
+            return result
+        })
+        addMethod(this, 'keys', (node, arr, lo, hi) => {
+            if (node === null) {
+                return 
+            }
+            if (lo < node.key) this.keys(node.left, arr, lo, hi)
+            if (lo <= node.key && hi >= node.key) arr.push(node.key)
+            if (hi > node.key) this.keys(node.right, arr, lo, hi)
+        })
     }
 
     contains (key) {
         return this.get(key) !== null
-    }
-
-    keys () {
-        let result = []
-        this.traverseTree((node) => {
-            result.push(node.key)
-        })
-        return result
     }
 }
 
