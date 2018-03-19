@@ -1,6 +1,7 @@
 import test from 'ava'
 import fs from 'fs'
 import path from 'path'
+const flatArr = require('../../../util/util').flatArr
 const SequentialSearchST = require('../../../src/algorithm/2.find/1.SequentialSearchST').Search
 const BinarySearchST = require('../../../src/algorithm/2.find/2.BinarySearchST').Search
 const BinarySearchTree = require('../../../src/algorithm/2.find/3.BST').BST
@@ -75,14 +76,4 @@ function readFile (path) {
             }
         })
     })
-}
-// 多维数组转为一维数组
-function flatArr (data, result) {
-    if (data instanceof Array) {
-        for (let item of data) {
-            flatArr(item, result)
-        }
-    } else {
-        result.push(data)
-    }
 }
