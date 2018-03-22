@@ -10,7 +10,6 @@ class Graph {
             // 从路径中读取文件
             if (typeof arg === 'string') {
                 await this.initByFile(arg)
-                resolve(this)
             } 
             // 初始化图的大小
             if (typeof arg === 'number') {
@@ -61,7 +60,7 @@ class Graph {
 
     // 与节点相连的所有节点
     connectedNodes (v) {
-        return this.adj[v]
+        return this.adj[v] || []
     }
 }
 
